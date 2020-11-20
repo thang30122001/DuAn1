@@ -11,7 +11,7 @@ import com.thcs.helper.JdbcHelper;
  *
  * @author Admin
  */
-public class NguoiDungDAO implements ThcsDAO<NguoiDung, String>{
+public class NguoiDungDAO extends ThcsDAO<NguoiDung, String>{
     
     String INSERT_SQL = "INSERT INTO NguoiDung (ChucVu, Username, Password)VALUES (?,?,?)";
     String UPDATE_SQL = "UPDATE NguoiDung SET ChucVu =?, Password =? WHERE (Username = ?)";

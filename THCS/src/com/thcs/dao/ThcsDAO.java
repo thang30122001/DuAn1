@@ -6,7 +6,7 @@ import java.util.List;
  *
  * @author Admin
  */
-public interface ThcsDAO<EntityType, KeyType> {
+public abstract class ThcsDAO<EntityType, KeyType> {
 
     abstract public void insert(EntityType entity);
 
