@@ -3,27 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/HocKi.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/GiaoVien.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/ui/ManHinhChinh.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/GiangDay.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/ui/DangNhap.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/dao/MonHocDao.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/ui/ManHinhChao.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/HocSinh.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/NguoiDung.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/KhoiHoc.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/LopHoc.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/helper/JdbcHelper.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/dao/GiaoVienDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/helper/Auth.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/ChiTietDiem.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/dao/NguoiDungDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/Diem.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/dao/ThcsDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/helper/MsgBox.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/entity/MonHoc.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/ui/ManHinhGVCN.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/ui/QuanLyLopChuNhiem.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/ui/QuanLyDiem.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DuAn1/THCS/src/com/thcs/ui/TraCuuDiem.java</file>
         </group>
     </open-files>
 </project-private>
