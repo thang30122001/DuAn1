@@ -2,15 +2,16 @@ package com.thcs.ui;
 
 /**
  *
- * @author Admin
+ * @author Thang
  */
-public class TraCuuDiem extends javax.swing.JFrame {
+public class TraCuuDiem extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form TraCuuDiem
+     * Creates new form TraCuuDiem1
      */
     public TraCuuDiem() {
         initComponents();
+        setTitle("Trường THCS FPT");
     }
 
     /**
@@ -22,34 +23,27 @@ public class TraCuuDiem extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel1.setText("TRA CỨU ĐIỂM");
-
-        jLabel2.setText("Mã học sinh");
-
-        jButton1.setText("Tìm kiếm");
+        jButton1 = new javax.swing.JButton();
 
         jLabel3.setText("Chào mừng giáo vụ A");
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/To do list.png"))); // NOI18N
+        jButton2.setText("Xuất ra excel");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -63,7 +57,13 @@ public class TraCuuDiem extends javax.swing.JFrame {
 
         jLabel5.setText("Khối");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setText("TRA CỨU ĐIỂM");
+
         jLabel6.setText("Lớp học");
+
+        jLabel2.setText("Mã học sinh");
 
         jLabel7.setText("Môn học");
 
@@ -88,8 +88,7 @@ public class TraCuuDiem extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/To do list.png"))); // NOI18N
-        jButton2.setText("Xuất ra excel");
+        jButton1.setText("Tìm kiếm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +133,7 @@ public class TraCuuDiem extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(459, 459, 459)
                         .addComponent(jButton1)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -170,46 +169,12 @@ public class TraCuuDiem extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jButton2)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TraCuuDiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TraCuuDiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TraCuuDiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TraCuuDiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TraCuuDiem().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

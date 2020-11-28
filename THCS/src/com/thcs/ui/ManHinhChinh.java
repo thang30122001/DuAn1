@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.thcs.ui;
+
+import com.thcs.helper.MsgBox;
+import com.thcs.helper.Auth;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -34,7 +33,7 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton1 = new javax.swing.JButton();
+        btKetThuc = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton3 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
@@ -42,6 +41,7 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -63,13 +63,18 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jToolBar1.add(jButton2);
         jToolBar1.add(jSeparator1);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Exit button.png"))); // NOI18N
-        jButton1.setText("Kết Thúc");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(5, 20, 5, 20));
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        btKetThuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Exit button.png"))); // NOI18N
+        btKetThuc.setText("Kết Thúc");
+        btKetThuc.setFocusable(false);
+        btKetThuc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btKetThuc.setMargin(new java.awt.Insets(5, 20, 5, 20));
+        btKetThuc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btKetThuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKetThucActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btKetThuc);
         jToolBar1.add(jSeparator2);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Home.png"))); // NOI18N
@@ -110,6 +115,15 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Quản Lí");
+
+        jMenuItem1.setText("Quản lý lớp học");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         jMenu2.setText("Thống kê");
@@ -137,6 +151,14 @@ public class ManHinhChinh extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKetThucActionPerformed
+        ketThuc();
+    }//GEN-LAST:event_btKetThucActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        openQuanLyLopHoc();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,18 +194,21 @@ public class ManHinhChinh extends javax.swing.JFrame {
             }
         });
     }
-    void init(){
+
+    void init() {
         this.openChao();
         this.openDangNhap();
     }
-    void openChao(){
-        new ManHinhChao(this,true).setVisible(true);
+
+    void openChao() {
+        new ManHinhChao(this, true).setVisible(true);
     }
-    void openDangNhap(){
-        new DangNhap(this,true).setVisible(true);
+
+    void openDangNhap() {
+        new DangNhap(this, true).setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btKetThuc;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -193,10 +218,43 @@ public class ManHinhChinh extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    void ketThuc() {
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc ?")) {
+            System.exit(0);
+        }
+    }
+
+// void dangXuat() {
+//        Auth.clear();
+//        for (JInternalFrame frmChild : .getAllFrames()) {
+//            frmChild.dispose();
+//        }
+//        new DangNhap(this, true).setVisible(true);
+//    }
+    void openQuanLyLopHoc() {
+        if (Auth.isLogin()) {
+            QuanLyLopHoc cd = new QuanLyLopHoc();
+            lamMoi();
+            cd.setTitle("EduSys - Chuyên đề");
+            jDesktopPane1.add(cd);
+            cd.setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+    
+    void lamMoi() {
+        for (JInternalFrame frmChild : jDesktopPane1.getAllFrames()) {
+            frmChild.dispose();
+        }
+    }
+
 }

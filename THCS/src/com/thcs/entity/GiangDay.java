@@ -13,4 +13,39 @@ public class GiangDay {
  String   MaGV;
  String MaLH ;
  String Mon ;
+
+    public GiangDay() {
+    }
+
+    public GiangDay(String MaGV, String MaLH, String Mon) {
+        this.MaGV = MaGV;
+        this.MaLH = MaLH;
+        this.Mon = Mon;
+    }
+
+    public String getMaGV() {
+        return MaGV;
+    }
+
+    public void setMaGV(String MaGV) {
+        this.MaGV = MaGV;
+    }
+
+    public String getMaLH() {
+        return MaLH;
+    }
+
+    public void setMaLH(String MaLH) {
+        this.MaLH = MaLH;
+    }
+
+    public String getMon() {
+        return Mon;
+    }
+
+    public void setMon(String Mon) {
+        this.Mon = Mon;
+    }
+ 
+ 
 }

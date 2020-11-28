@@ -5,16 +5,19 @@
  */
 package com.thcs.entity;
 
+import java.util.List;
+
 /**
  *
  * @author Admin
  */
 public class LopHoc {
-   String MaLH;
- String MaKhoiHoc;
- String MaGVCN;
- String TenLop;
- int SiSo;
+
+    String MaLH;
+    String MaKhoiHoc;
+    String MaGVCN;
+    String TenLop;
+    int SiSo;
 
     public LopHoc() {
     }
@@ -26,8 +29,7 @@ public class LopHoc {
         this.TenLop = TenLop;
         this.SiSo = SiSo;
     }
-    
- 
+
     public String getMaLH() {
         return MaLH;
     }
@@ -66,5 +68,9 @@ public class LopHoc {
 
     public void setSiSo(int SiSo) {
         this.SiSo = SiSo;
+    }
+
+    public List<LopHoc> selectByKhoiHoc(String maKhoiHoc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
