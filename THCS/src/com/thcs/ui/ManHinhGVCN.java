@@ -16,6 +16,7 @@ public class ManHinhGVCN extends javax.swing.JInternalFrame {
      */
     public ManHinhGVCN() {
         initComponents();
+        
     }
 
     /**

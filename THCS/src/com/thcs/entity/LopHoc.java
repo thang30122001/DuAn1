@@ -5,8 +5,6 @@
  */
 package com.thcs.entity;
 
-import java.util.List;
-
 /**
  *
  * @author Admin
@@ -68,9 +66,5 @@ public class LopHoc {
 
     public void setSiSo(int SiSo) {
         this.SiSo = SiSo;
-    }
-
-    public List<LopHoc> selectByKhoiHoc(String maKhoiHoc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

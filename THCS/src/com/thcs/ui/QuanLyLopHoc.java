@@ -1,22 +1,35 @@
 package com.thcs.ui;
 
+import com.thcs.dao.KhoiHocDao;
+import com.thcs.dao.LopHocDao;
+import com.thcs.dao.HocKiDao;
+import com.thcs.dao.HocSinhDao;
+import com.thcs.entity.HocKi;
 import com.thcs.entity.KhoiHoc;
 import com.thcs.entity.LopHoc;
+import com.thcs.helper.MsgBox;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Admin
  */
-public class QuanLyLopHoc extends javax.swing.JInternalFrame {
+public class QuanLyLopHoc extends javax.swing.JFrame {
 
     /**
      * Creates new form QuanLyLopHoc
      */
     public QuanLyLopHoc() {
         initComponents();
+        FillCboHocKi();
+        FillCboKhoi();
         fillTable();
+        
+        this.setLocationRelativeTo(null);
+        DefaultTableModel model1 = (DefaultTableModel) tblBang.getModel();
+        model1.setRowCount(0);
     }
 
     /**
@@ -65,6 +78,8 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         btXuat2 = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Quản lý lớp học");
@@ -81,7 +96,12 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Năm học");
 
-        cboNamHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNamHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023" }));
+        cboNamHoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNamHocActionPerformed(evt);
+            }
+        });
 
         btTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btTimKiem.setText("Tìm kiếm");
@@ -105,15 +125,29 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblBang);
 
         btThemMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btThemMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Add.png"))); // NOI18N
         btThemMoi.setText("Thêm mới");
+        btThemMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemMoiActionPerformed(evt);
+            }
+        });
 
         btCapNhat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Up.png"))); // NOI18N
         btCapNhat.setText("Cập nhật");
+        btCapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCapNhatActionPerformed(evt);
+            }
+        });
 
         btNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Edit.png"))); // NOI18N
         btNhap.setText("Nhập danh sách từ excel");
 
         btXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/To do list.png"))); // NOI18N
         btXuat.setText("Xuất danh sách ra excel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -149,13 +183,13 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(btThemMoi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGap(96, 96, 96)
                 .addComponent(btCapNhat)
-                .addGap(119, 119, 119)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(btNhap)
-                .addGap(126, 126, 126)
+                .addGap(92, 92, 92)
                 .addComponent(btXuat)
-                .addGap(99, 99, 99))
+                .addGap(81, 81, 81))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +211,7 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(cboHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -308,7 +342,7 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel11)
                                 .addGap(247, 247, 247)
                                 .addComponent(jLabel13)))))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +361,7 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btXuat2)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Danh sách hs theo lớp", jPanel2);
@@ -358,6 +392,52 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btTimKiemActionPerformed
 
+    private void cboNamHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamHocActionPerformed
+        
+    }//GEN-LAST:event_cboNamHocActionPerformed
+
+    private void btThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemMoiActionPerformed
+        insert();
+    }//GEN-LAST:event_btThemMoiActionPerformed
+
+    private void btCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCapNhatActionPerformed
+        update();
+    }//GEN-LAST:event_btCapNhatActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(QuanLyLopHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(QuanLyLopHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(QuanLyLopHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(QuanLyLopHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new QuanLyLopHoc().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCapNhat;
@@ -397,27 +477,109 @@ public class QuanLyLopHoc extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNamHoc;
     private javax.swing.JTextField txtTenLopHoc;
     // End of variables declaration//GEN-END:variables
-
-    int row = 0;
-    KhoiHoc khDAO = new KhoiHoc();
-    LopHoc lhDAO = new LopHoc();
-
+   
+    HocKiDao dao = new HocKiDao();
+    LopHocDao daoLH = new LopHocDao();
+    KhoiHocDao daoKH = new KhoiHocDao();
+    HocSinhDao daohs = new HocSinhDao();
+    
+    
+    void FillCboKhoi() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboKhoi.getModel();
+        model.removeAllElements();
+        try {
+            List<KhoiHoc> list = daoKH.selectAll();
+            for (KhoiHoc kh : list) {
+                model.addElement(kh.getTenKhoiHoc());
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Loi truy van");
+        }
+    }
+    
+    
+    void FillCboHocKi() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboHocKy.getModel();
+        model.removeAllElements();
+        try {
+            List<HocKi> list = dao.selectAll();
+            for (HocKi hk : list) {
+                model.addElement(hk.getMaHocKi());
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Loi truy van");
+        }
+    }
+    
+    
+    
     void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
+        List<Object[]> list = daoLH.getcboLop();
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
+    
+    
+    boolean checkMaLop() {
+        if (txtMaLopHoc.getText().equals("")) {
+            txtMaLopHoc.requestFocus();
+            MsgBox.alert(this, "Mã lớp học không được để trống");
+            return false;
+        }
+        return true;
+    }
+    
+    
+    void setForm(LopHoc lh) {
         try {
-            KhoiHoc lh = (KhoiHoc) cboKhoi.getSelectedItem();
-            List<LopHoc> list = lhDAO.selectByKhoiHoc(lh.getMaKhoiHoc());
-            for (LopHoc kh : list) {
-                Object[] row = {
-                    kh.getMaLH(),
-                    kh.getMaKhoiHoc(),
-                    kh.getMaGVCN(),
-                    kh.getTenLop(),
-                    kh.getSiSo()
-                };
-                model.addRow(row);
+            cboKhoi.setToolTipText(String.valueOf(lh.getMaKhoiHoc()));
+            txtMaLopHoc.setText(String.valueOf(lh.getMaLH()));       
+        } catch (Exception e) {
+            
+        }
+    }
+    
+    
+    LopHoc getForm() {
+        
+        LopHoc lh = new LopHoc();
+        KhoiHoc kh = (KhoiHoc) cboKhoi.getSelectedItem();
+        lh.setMaKhoiHoc(lh.getMaKhoiHoc());
+        lh.setMaGVCN(lh.getMaGVCN());
+        lh.setTenLop(lh.getTenLop());
+        lh.setSiSo(lh.getSiSo());
+        return lh;
+        
+    }
+    
+    
+    
+    void insert() {
+        try {
+            if (checkMaLop()) {
+                LopHoc lh = getForm();
+                lh.setMaLH(new String());
+                daoLH.insert(lh);
+                this.fillTable();
+                MsgBox.alert(this, "Thêm mới thành công");
             }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    
+    void update() {
+        try {
+            LopHoc lh = getForm();
+            daoLH.update(lh);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

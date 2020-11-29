@@ -6,18 +6,20 @@ public class GiaoVien {
     private String MaMH;
     private String HoTen;
     private String DiaChi;
-    private String GioiTinh;
+    private boolean GioiTinh;
 
     public GiaoVien() {
     }
 
-    public GiaoVien(String MaGV, String MaMH, String HoTen, String DiaChi, String GioiTinh) {
+    public GiaoVien(String MaGV, String MaMH, String HoTen, String DiaChi, boolean GioiTinh) {
         this.MaGV = MaGV;
         this.MaMH = MaMH;
         this.HoTen = HoTen;
         this.DiaChi = DiaChi;
         this.GioiTinh = GioiTinh;
     }
+
+    
 
     public String getMaGV() {
         return MaGV;
@@ -51,13 +53,15 @@ public class GiaoVien {
         this.DiaChi = DiaChi;
     }
 
-    public String getGioiTinh() {
+    public boolean isGioiTinh() {
         return GioiTinh;
     }
 
-    public void setGioiTinh(String GioiTinh) {
+    public void setGioiTinh(boolean GioiTinh) {
         this.GioiTinh = GioiTinh;
     }
+
+   
 
     public boolean isChucVu() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

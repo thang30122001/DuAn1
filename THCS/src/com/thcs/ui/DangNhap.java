@@ -51,7 +51,6 @@ public class DangNhap extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         txtUsername.setBackground(new java.awt.Color(204, 204, 204));
-        txtUsername.setText("thanghnGV");
 
         txtPassword.setBackground(new java.awt.Color(204, 204, 204));
 

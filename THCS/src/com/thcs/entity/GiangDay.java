@@ -14,13 +14,13 @@ public class GiangDay {
  String MaLH ;
  String Mon ;
 
-    public GiangDay() {
-    }
-
     public GiangDay(String MaGV, String MaLH, String Mon) {
         this.MaGV = MaGV;
         this.MaLH = MaLH;
         this.Mon = Mon;
+    }
+
+    public GiangDay() {
     }
 
     public String getMaGV() {
@@ -46,6 +46,5 @@ public class GiangDay {
     public void setMon(String Mon) {
         this.Mon = Mon;
     }
- 
  
 }
