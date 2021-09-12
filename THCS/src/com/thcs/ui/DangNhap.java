@@ -40,7 +40,7 @@ public class DangNhap extends javax.swing.JDialog {
         btnDangnhap = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnDangXuat = new javax.swing.JButton();
+        btnKetThuc = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -68,11 +68,11 @@ public class DangNhap extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Mật khẩu");
 
-        btnDangXuat.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnDangXuat.setText("Đăng Xuất");
-        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+        btnKetThuc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnKetThuc.setText("Kết thúc");
+        btnKetThuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangXuatActionPerformed(evt);
+                btnKetThucActionPerformed(evt);
             }
         });
 
@@ -94,22 +94,22 @@ public class DangNhap extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(251, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPassword)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnDangnhap)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                                .addComponent(btnDangXuat)))
-                        .addGap(63, 63, 63))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(54, 54, 54))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
@@ -128,7 +128,7 @@ public class DangNhap extends javax.swing.JDialog {
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jLabel3))
@@ -150,12 +150,12 @@ public class DangNhap extends javax.swing.JDialog {
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
         // TODO add your handling code here:
-        Login();
+        login();
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDangXuatActionPerformed
+    private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
+        ketThuc();
+    }//GEN-LAST:event_btnKetThucActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,34 +198,11 @@ public class DangNhap extends javax.swing.JDialog {
             }
         });
     }
-    NguoiDungDAO dao = new NguoiDungDAO();
-
-    void Login() {
-        String MaNV = txtUsername.getText();
-        String Password = txtPassword.getText();
-        try {
-            NguoiDung nguoidung = dao.selectById(MaNV);
-            if (nguoidung != null) {
-                String MK = nguoidung.getPassword();
-                if (MK.equals(Password)) {
-                    Auth.user = nguoidung;
-                    MsgBox.alert(this, "Đăng nhập thành công!");
-                    this.dispose();
-                } else {
-                    MsgBox.alert(this, "Sai mật khẩu!");
-                }
-            } else {
-                MsgBox.alert(this, "Sai tên đăng nhập!");
-            }
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDangnhap;
+    private javax.swing.JButton btnKetThuc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -234,4 +211,62 @@ public class DangNhap extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    NguoiDungDAO dao = new NguoiDungDAO();
+
+//    void Login() {
+//        String MaNV = txtUsername.getText();
+//        String Password = txtPassword.getText();
+//        try {
+//            NguoiDung nguoidung = dao.selectById(MaNV);
+//            if (nguoidung != null) {
+//                String MK = nguoidung.getPassword();
+//                if (MK.equals(Password)) {
+//                    Auth.user = nguoidung;
+//                    MsgBox.alert(this, "Đăng nhập thành công!");
+//                    this.dispose();
+//                } else {
+//                    MsgBox.alert(this, "Sai mật khẩu!");
+//                }
+//            } else {
+//                MsgBox.alert(this, "Sai tên đăng nhập!");
+//            }
+//        } catch (Exception e) {
+//            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+//        }
+//    }
+    void login() {
+        if (checkNull()) {
+            String manv = txtUsername.getText();
+            String matKhau = new String(txtPassword.getPassword());
+            NguoiDung nd = dao.selectById(manv);
+            if (nd == null) {
+                MsgBox.alert(this, "Sai tên đăng nhập");
+            } else if (!matKhau.equals(nd.getPassword())) {
+                MsgBox.alert(this, "Sai mật khẩu");
+            } else {
+                Auth.user = nd;
+                this.dispose();
+            }
+        }
+
+    }
+
+    boolean checkNull() {
+        if (txtUsername.getText().equals("")) {
+            MsgBox.alert(this, "Tên tài khoản không được bỏ trống");
+            return false;
+        } else if (txtPassword.getText().equals("")) {
+            MsgBox.alert(this, "Mật khẩu không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+
+    void ketThuc() {
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc ứng dụng?")) {
+            System.exit(0);
+        }
+    }
+
 }

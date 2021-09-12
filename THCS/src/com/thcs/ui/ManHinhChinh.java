@@ -1,9 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.thcs.ui;
+
+import com.thcs.helper.Auth;
+import com.thcs.helper.MsgBox;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JInternalFrame;
+import javax.swing.Timer;
 
 /**
  *
@@ -18,8 +22,8 @@ public class ManHinhChinh extends javax.swing.JFrame {
         initComponents();
         init();
         this.setLocationRelativeTo(null);
-        QuanLyHocSinh ql=new QuanLyHocSinh();
-        ql.setVisible(true);
+//        QuanLyHocSinh ql=new QuanLyHocSinh();
+//        ql.setVisible(true);
     }
 
     /**
@@ -34,13 +38,16 @@ public class ManHinhChinh extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
+        btDangXuat = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton1 = new javax.swing.JButton();
+        btKetThuc = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
+        btLopHoc = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        jButton4 = new javax.swing.JButton();
+        btDiem = new javax.swing.JButton();
+        lblDongHo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -51,61 +58,98 @@ public class ManHinhChinh extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Exit.png"))); // NOI18N
-        jButton2.setText("Đăng Xuất");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(5, 20, 5, 20));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Exit.png"))); // NOI18N
+        btDangXuat.setText("Đăng Xuất");
+        btDangXuat.setFocusable(false);
+        btDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btDangXuat.setMargin(new java.awt.Insets(5, 20, 5, 20));
+        btDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btDangXuatActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(btDangXuat);
         jToolBar1.add(jSeparator1);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Exit button.png"))); // NOI18N
-        jButton1.setText("Kết Thúc");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(5, 20, 5, 20));
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        btKetThuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Exit button.png"))); // NOI18N
+        btKetThuc.setText("Kết Thúc");
+        btKetThuc.setFocusable(false);
+        btKetThuc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btKetThuc.setMargin(new java.awt.Insets(5, 20, 5, 20));
+        btKetThuc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btKetThuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKetThucActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btKetThuc);
         jToolBar1.add(jSeparator2);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Home.png"))); // NOI18N
-        jButton3.setText("Lớp Học");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setMargin(new java.awt.Insets(5, 20, 5, 20));
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        btLopHoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Home.png"))); // NOI18N
+        btLopHoc.setText("Lớp Học");
+        btLopHoc.setFocusable(false);
+        btLopHoc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btLopHoc.setMargin(new java.awt.Insets(5, 20, 5, 20));
+        btLopHoc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btLopHoc);
         jToolBar1.add(jSeparator4);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Card file.png"))); // NOI18N
-        jButton4.setText("Điểm");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setMargin(new java.awt.Insets(5, 20, 5, 20));
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        btDiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Card file.png"))); // NOI18N
+        btDiem.setText("Điểm");
+        btDiem.setFocusable(false);
+        btDiem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btDiem.setMargin(new java.awt.Insets(5, 20, 5, 20));
+        btDiem.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDiemActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btDiem);
+
+        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/Alarm.png"))); // NOI18N
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thcs/icon/hs.png"))); // NOI18N
+
+        lblUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblUser.setText("Chào mừng giáo viên A");
 
         jDesktopPane1.setLayer(jToolBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lblDongHo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lblUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 424, Short.MAX_VALUE))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                        .addComponent(lblUser))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDongHo)))
+                .addGap(55, 55, 55))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 501, Short.MAX_VALUE))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lblUser)))
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblDongHo)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Hệ Thống");
@@ -136,9 +180,17 @@ public class ManHinhChinh extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDangXuatActionPerformed
+        dangXuat();
+    }//GEN-LAST:event_btDangXuatActionPerformed
+
+    private void btDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDiemActionPerformed
+        openDiem();
+    }//GEN-LAST:event_btDiemActionPerformed
+
+    private void btKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKetThucActionPerformed
+        ketThuc();
+    }//GEN-LAST:event_btKetThucActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,22 +226,27 @@ public class ManHinhChinh extends javax.swing.JFrame {
             }
         });
     }
-    void init(){
+
+    void init() {
         this.openChao();
         this.openDangNhap();
+        this.startDongHo();
     }
-    void openChao(){
-        new ManHinhChao(this,true).setVisible(true);
+
+    void openChao() {
+        new ManHinhChao(this, true).setVisible(true);
     }
-    void openDangNhap(){
-        new DangNhap(this,true).setVisible(true);
+
+    void openDangNhap() {
+        new DangNhap(this, true).setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btDangXuat;
+    private javax.swing.JButton btDiem;
+    private javax.swing.JButton btKetThuc;
+    private javax.swing.JButton btLopHoc;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -200,5 +257,46 @@ public class ManHinhChinh extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblDongHo;
+    private javax.swing.JLabel lblUser;
     // End of variables declaration//GEN-END:variables
+
+    void openDiem() {
+        if (Auth.isLogin()) {
+            QuanLyDiem diem = new QuanLyDiem();
+            diem.setTitle("EduSys - Nhân viên");
+            jDesktopPane1.add(diem);
+            diem.setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+    
+    void startDongHo() {
+        new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Date now = new Date();
+                SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
+                String text = formater.format(now);
+                lblDongHo.setText(text);
+            }
+        }).start();
+    }
+    
+    void ketThuc() {
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc ?")) {
+            System.exit(0);
+        }
+    }
+    
+    
+    void dangXuat() {
+        Auth.clear();
+        for (JInternalFrame frmChild : jDesktopPane1.getAllFrames()) {
+            frmChild.dispose();
+        }
+        new DangNhap(this, true).setVisible(true);
+    }
+
 }

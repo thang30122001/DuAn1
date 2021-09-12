@@ -103,8 +103,6 @@ public class LopHocDao extends ThcsDAO<LopHoc, String> {
     public List<LopHoc> selectByK(String maKhoiHoc) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 
     public List<Object[]> getcboKhoi(String mahocki) {
         List<Object[]> list = new ArrayList<>();

@@ -25,8 +25,8 @@ public class QuanLyLopHoc extends javax.swing.JFrame {
         initComponents();
         FillCboHocKi();
         FillCboKhoi();
-        fillTable();
-        
+//        fillTable();
+
         this.setLocationRelativeTo(null);
         DefaultTableModel model1 = (DefaultTableModel) tblBang.getModel();
         model1.setRowCount(0);
@@ -393,15 +393,15 @@ public class QuanLyLopHoc extends javax.swing.JFrame {
     }//GEN-LAST:event_btTimKiemActionPerformed
 
     private void cboNamHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamHocActionPerformed
-        
+
     }//GEN-LAST:event_cboNamHocActionPerformed
 
     private void btThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemMoiActionPerformed
-        insert();
+//        insert();
     }//GEN-LAST:event_btThemMoiActionPerformed
 
     private void btCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCapNhatActionPerformed
-        update();
+//        update();
     }//GEN-LAST:event_btCapNhatActionPerformed
 
     /**
@@ -477,13 +477,12 @@ public class QuanLyLopHoc extends javax.swing.JFrame {
     private javax.swing.JTextField txtNamHoc;
     private javax.swing.JTextField txtTenLopHoc;
     // End of variables declaration//GEN-END:variables
-   
+
     HocKiDao dao = new HocKiDao();
     LopHocDao daoLH = new LopHocDao();
     KhoiHocDao daoKH = new KhoiHocDao();
     HocSinhDao daohs = new HocSinhDao();
-    
-    
+
     void FillCboKhoi() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboKhoi.getModel();
         model.removeAllElements();
@@ -496,8 +495,7 @@ public class QuanLyLopHoc extends javax.swing.JFrame {
             MsgBox.alert(this, "Loi truy van");
         }
     }
-    
-    
+
     void FillCboHocKi() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboHocKy.getModel();
         model.removeAllElements();
@@ -510,79 +508,71 @@ public class QuanLyLopHoc extends javax.swing.JFrame {
             MsgBox.alert(this, "Loi truy van");
         }
     }
-    
-    
-    
-    void fillTable() {
-        DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
-        model.setRowCount(0);
-        List<Object[]> list = daoLH.getcboLop();
-        for (Object[] row : list) {
-            model.addRow(row);
-        }
-    }
-    
-    
-    boolean checkMaLop() {
-        if (txtMaLopHoc.getText().equals("")) {
-            txtMaLopHoc.requestFocus();
-            MsgBox.alert(this, "Mã lớp học không được để trống");
-            return false;
-        }
-        return true;
-    }
-    
-    
-    void setForm(LopHoc lh) {
-        try {
-            cboKhoi.setToolTipText(String.valueOf(lh.getMaKhoiHoc()));
-            txtMaLopHoc.setText(String.valueOf(lh.getMaLH()));       
-        } catch (Exception e) {
-            
-        }
-    }
-    
-    
-    LopHoc getForm() {
-        
-        LopHoc lh = new LopHoc();
-        KhoiHoc kh = (KhoiHoc) cboKhoi.getSelectedItem();
-        lh.setMaKhoiHoc(lh.getMaKhoiHoc());
-        lh.setMaGVCN(lh.getMaGVCN());
-        lh.setTenLop(lh.getTenLop());
-        lh.setSiSo(lh.getSiSo());
-        return lh;
-        
-    }
-    
-    
-    
-    void insert() {
-        try {
-            if (checkMaLop()) {
-                LopHoc lh = getForm();
-                lh.setMaLH(new String());
-                daoLH.insert(lh);
-                this.fillTable();
-                MsgBox.alert(this, "Thêm mới thành công");
-            }
-            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    
-    
-    void update() {
-        try {
-            LopHoc lh = getForm();
-            daoLH.update(lh);
-            this.fillTable();
-            MsgBox.alert(this, "Cập nhật thành công");
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
+//    void fillTable() {
+//        DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
+//        model.setRowCount(0);
+//        List<Object[]> list = daoLH.getcboLop();
+//        for (Object[] row : list) {
+//            model.addRow(row);
+//        }
+//    }
+//    boolean checkMaLop() {
+//        if (txtMaLopHoc.getText().equals("")) {
+//            txtMaLopHoc.requestFocus();
+//            MsgBox.alert(this, "Mã lớp học không được để trống");
+//            return false;
+//        }
+//        return true;
+//    }
+//    
+//    
+//    void setForm(LopHoc lh) {
+//        try {
+//            cboKhoi.setToolTipText(String.valueOf(lh.getMaKhoiHoc()));
+//            txtMaLopHoc.setText(String.valueOf(lh.getMaLH()));       
+//        } catch (Exception e) {
+//            
+//        }
+//    }
+//    
+//    
+//    LopHoc getForm() {
+//        
+//        LopHoc lh = new LopHoc();
+//        KhoiHoc kh = (KhoiHoc) cboKhoi.getSelectedItem();
+//        lh.setMaKhoiHoc(lh.getMaKhoiHoc());
+//        lh.setMaGVCN(lh.getMaGVCN());
+//        lh.setTenLop(lh.getTenLop());
+//        lh.setSiSo(lh.getSiSo());
+//        return lh;
+//        
+//    }
+//    void insert() {
+//        try {
+//            if (checkMaLop()) {
+//                LopHoc lh = getForm();
+//                lh.setMaLH(new String());
+//                daoLH.insert(lh);
+//                this.fillTable();
+//                MsgBox.alert(this, "Thêm mới thành công");
+//            }
+//            
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
+//    
+//    
+//    void update() {
+//        try {
+//            LopHoc lh = getForm();
+//            daoLH.update(lh);
+//            this.fillTable();
+//            MsgBox.alert(this, "Cập nhật thành công");
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
